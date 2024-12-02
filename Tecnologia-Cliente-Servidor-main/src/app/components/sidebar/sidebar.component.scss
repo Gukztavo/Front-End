@@ -1,0 +1,22 @@
+.top-bar {
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.top-bar ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.top-bar ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+.top-bar ul li a:hover {
+  text-decoration: underline;
+}

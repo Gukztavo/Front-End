@@ -1,0 +1,39 @@
+<app-sidebar></app-sidebar>
+
+<div class="user-list">
+  <h1>Lista de Usuários</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.nome }}</td>
+        <td>{{ user.email }}</td>
+        <td>
+          <button (click)="editUser(user)">Editar</button>
+          <button (click)="deleteUser(user.email)">Excluir</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Modal para edição -->
+<div *ngIf="isModalOpen" class="modal">
+  <div class="modal-content">
+    <h2>Editar Usuário</h2>
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" [(ngModel)]="selectedUser.nome" />
+
+    <label for="senha">Senha:</label>
+    <input type="password" id="senha" [(ngModel)]="selectedUser.senha" />
+
+    <button (click)="saveUser()">Salvar</button>
+    <button (click)="closeModal()">Cancelar</button>
+  </div>
+</div>
