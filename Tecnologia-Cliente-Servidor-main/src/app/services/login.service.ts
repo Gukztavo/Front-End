@@ -3,12 +3,13 @@ import { Injectable } from '@angular/core';
 import { LoginResponse } from '../types/login-response.type';
 import { tap } from 'rxjs';
 import {jwtDecode} from 'jwt-decode'; // Importando a biblioteca para decodificar o JWT
+import { environment } from '../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
-  apiUrl: string = "http://10.20.8.35:22222"
+  apiUrl: string = environment.api_url;
 
   constructor(private httpClient: HttpClient) { }
 //preciso pegar o email doi jwt

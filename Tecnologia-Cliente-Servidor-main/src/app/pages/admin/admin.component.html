@@ -15,8 +15,8 @@
         <td>{{ user.nome }}</td>
         <td>{{ user.email }}</td>
         <td>
-          <button (click)="editUser(user)">Editar</button>
-          <button (click)="deleteUser(user.email)">Excluir</button>
+          <button  (click)="editUser(user)" [disabled]="user.nome === 'admin'" >Editar</button>
+          <button  (click)="deleteUser(user.email)" [disabled]="user.nome === 'admin'" >Excluir</button>
         </td>
       </tr>
     </tbody>

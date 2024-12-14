@@ -34,23 +34,29 @@ export class SignUpComponent {
     private router: Router,
     private loginService: LoginService,
     private toastService: ToastrService
-  ){
+  ) {
     this.signupForm = new FormGroup({
       name: new FormControl('', [Validators.required, Validators.minLength(3)]),
       email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required, Validators.minLength(6)]),
-      passwordConfirm: new FormControl('', [Validators.required, Validators.minLength(6)]),
+      password: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(6)]),
+      passwordConfirm: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(6)]),
     })
   }
+  private passwordMatchValidator(form: FormGroup): { mismatch: boolean } | null {
+    const password = form.get('password')?.value;
+    const confirmPassword = form.get('passwordConfirm')?.value;
+    return password === confirmPassword ? null : { mismatch: true };
+  }
 
-  submit(){
+  submit() {
     this.loginService.signup(this.signupForm.value.name, this.signupForm.value.email, this.signupForm.value.password).subscribe({
       next: () => this.toastService.success("Login feito com sucesso!"),
       error: () => this.toastService.error("Erro inesperado! Tente novamente mais tarde")
     })
   }
 
-  navigate(){
+  navigate() {
     this.router.navigate(["login"])
   }
+
 }

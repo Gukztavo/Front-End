@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment.development';
 
 interface User {
   email: string;
@@ -15,7 +16,7 @@ export class UserService {
   getUserData(email: string) {
     throw new Error('Method not implemented.');
   }
-  private apiUrl = 'http://10.20.8.35:22222/usuarios'; // Base URL para buscar usuários
+  public apiUrl = environment.api_url + '/usuarios'; // Base URL para buscar usuários
 
   constructor(private http: HttpClient) { }
 
