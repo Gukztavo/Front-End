@@ -3,7 +3,7 @@
   <ul>
     <li><a (click)="navigateToHome()">Home</a></li>
     <li><a (click)="navigateToProfile()">Perfil</a></li>
-    <li><a routerLink="/categories">Categorias</a></li>
+    <li><a (click)="navigateToCategories()">Categorias</a></li>
     <li><a (click)="logout()">Logout</a></li>
     <li><a *ngIf="isAdmin" (click)="navigateToAdmin()">Admin</a></li>
   </ul>

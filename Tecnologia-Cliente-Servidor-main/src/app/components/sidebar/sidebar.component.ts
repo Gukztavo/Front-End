@@ -53,7 +53,7 @@ export class SidebarComponent implements OnInit {
     this.router.navigate(['/profile']);
   }
   navigateToCategories() {
-    this.router.navigate(['/categories']);
+    this.router.navigate(['/categorias']);
   }
   navigateToProfile() {
     this.router.navigate(['/profile']);
@@ -65,4 +65,5 @@ export class SidebarComponent implements OnInit {
   navigateToAdmin() {
     this.router.navigate(['/admin-users']);
   }
+
 }

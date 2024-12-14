@@ -5,6 +5,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { AuthGuard } from './services/auth-guard.service';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { AdminComponent } from './pages/admin/admin.component';
+import { CategoryComponent } from './pages/category/category.component';
 
 export const routes: Routes = [
   {
@@ -35,5 +36,7 @@ export const routes: Routes = [
     canActivate: [AuthGuard]
   },
   { path: 'admin-users', component: AdminComponent },
+
+  { path: 'categorias', component: CategoryComponent },
 
 ];

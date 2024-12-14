@@ -1,0 +1,50 @@
+<app-sidebar></app-sidebar>
+
+<div class="container">
+  <h1>Gerenciamento de Categorias</h1>
+
+  <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+
+  <!-- Criar Categoria -->
+  <div class="form-group">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Nova Categoria"
+      [(ngModel)]="newCategory"
+    />
+    <button class="btn btn-primary mt-2" (click)="addCategory()">Adicionar</button>
+  </div>
+
+  <!-- Lista de Categorias -->
+  <ul class="list-group mt-4">
+    <li *ngFor="let category of categories" class="list-group-item">
+      <!-- Exibir ou Editar Categoria -->
+      <div *ngIf="selectedCategory?.id !== category.id">
+        {{ category.nome }}
+        <button class="btn btn-warning btn-sm ml-2" (click)="editCategory(category)">
+          Editar
+        </button>
+        <button
+          class="btn btn-danger btn-sm ml-2"
+          (click)="category.id ? deleteCategory(category.id) : null"
+        >
+          Excluir
+        </button>
+      </div>
+
+      <!-- Formulário de Edição -->
+      <div *ngIf="selectedCategory?.id === category.id">
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="selectedCategory.nome"
+        />
+        <button class="btn btn-success btn-sm mt-2" (click)="updateCategory()">
+          Salvar
+        </button>
+
+      </div>
+    </li>
+  </ul>
+</div>
