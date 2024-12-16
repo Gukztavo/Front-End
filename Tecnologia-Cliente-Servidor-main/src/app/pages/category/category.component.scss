@@ -1,0 +1,135 @@
+/* Container principal */
+.category-container {
+  max-width: 900px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+  color: #333;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Cabeçalho */
+.category-header h1 {
+  text-align: center;
+  color: #2c3e50;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* Mensagem de erro */
+.category-error {
+  color: #e74c3c;
+  background: #fcecec;
+  padding: 12px;
+  border: 1px solid #e74c3c;
+  border-radius: 8px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Adicionar Categoria */
+.category-add-section {
+  margin-bottom: 30px;
+  padding: 20px;
+  background: #ecf0f1;
+  border-radius: 8px;
+}
+
+.category-add-form {
+  display: flex;
+  gap: 10px;
+}
+
+.category-input {
+  flex: 1;
+  padding: 12px;
+  font-size: 14px;
+  border: 1px solid #bdc3c7;
+  border-radius: 4px;
+}
+
+/* Botões gerais */
+.category-btn {
+  padding: 10px 15px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.category-btn-add {
+  background-color: #27ae60;
+}
+
+.category-btn-edit {
+  background-color: #f1c40f;
+}
+
+.category-btn-delete {
+  background-color: #e74c3c;
+}
+
+.category-btn-save {
+  background-color: #2980b9;
+}
+
+.category-btn-cancel {
+  background-color: #95a5a6;
+}
+
+.category-btn:hover {
+  opacity: 0.9;
+}
+
+/* Lista de Categorias */
+.category-list-section {
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 8px;
+}
+
+.category-list {
+  list-style: none;
+  padding: 0;
+}
+
+.category-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  margin-bottom: 10px;
+  background: #ecf0f1;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.category-item:hover {
+  background: #dce1e3;
+}
+
+.category-view {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.category-id {
+  font-weight: bold;
+  color: #34495e;
+}
+
+.category-name {
+  font-size: 16px;
+  color: #2c3e50;
+}
+
+/* Formulário de edição */
+.category-edit {
+  display: flex;
+  gap: 10px;
+}

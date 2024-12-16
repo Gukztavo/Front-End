@@ -1,50 +1,59 @@
 <app-sidebar></app-sidebar>
 
-<div class="container">
-  <h1>Gerenciamento de Categorias</h1>
+<div class="category-container">
+  <div class="category-header">
+    <h1>Categorias</h1>
+  </div>
 
-  <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+  <!-- Mensagem de erro -->
+  <div *ngIf="errorMessage" class="category-error">
+    {{ errorMessage }}
+  </div>
 
-  <!-- Criar Categoria -->
-  <div class="form-group">
-    <input
-      type="text"
-      class="form-control"
-      placeholder="Nova Categoria"
-      [(ngModel)]="newCategory"
-    />
-    <button class="btn btn-primary mt-2" (click)="addCategory()">Adicionar</button>
+  <!-- Adicionar Categoria -->
+  <div *ngIf="admin" class="category-add-section">
+    <h2>Adicionar Nova Categoria</h2>
+    <div class="category-add-form">
+      <input
+        type="text"
+        class="category-input"
+        placeholder="Digite o nome da nova categoria"
+        [(ngModel)]="newCategory"
+      />
+      <button class="category-btn category-btn-add" (click)="addCategory()">Adicionar</button>
+    </div>
   </div>
 
   <!-- Lista de Categorias -->
-  <ul class="list-group mt-4">
-    <li *ngFor="let category of categories" class="list-group-item">
-      <!-- Exibir ou Editar Categoria -->
-      <div *ngIf="selectedCategory?.id !== category.id">
-        {{ category.nome }}
-        <button class="btn btn-warning btn-sm ml-2" (click)="editCategory(category)">
-          Editar
-        </button>
-        <button
-          class="btn btn-danger btn-sm ml-2"
-          (click)="category.id ? deleteCategory(category.id) : null"
-        >
-          Excluir
-        </button>
-      </div>
+  <div class="category-list-section">
+    <h2>Lista de Categorias</h2>
+    <ul class="category-list">
+      <li *ngFor="let category of categories" class="category-item">
+        <!-- Exibir Categoria -->
+        <div *ngIf="selectedCategory?.id !== category.id" class="category-view">
+          <span class="category-id">ID: {{ category.id }}</span>
+          <span class="category-name">{{ category.nome }}</span>
+          <button *ngIf="admin" class="category-btn category-btn-edit" (click)="editCategory(category)">
+            Editar
+          </button>
+          <button *ngIf="admin"
+            class="category-btn category-btn-delete"
+            (click)="category.id ? deleteCategory(category.id) : null"
+          >
+            Excluir
+          </button>
+        </div>
 
-      <!-- Formulário de Edição -->
-      <div *ngIf="selectedCategory?.id === category.id">
-        <input
-          type="text"
-          class="form-control"
-          [(ngModel)]="selectedCategory.nome"
-        />
-        <button class="btn btn-success btn-sm mt-2" (click)="updateCategory()">
-          Salvar
-        </button>
-
-      </div>
-    </li>
-  </ul>
+        <!-- Editar Categoria -->
+        <div  *ngIf="selectedCategory?.id === category.id" class="category-edit">
+          <input
+            type="text"
+            class="category-input"
+            [(ngModel)]="selectedCategory.nome"
+          />
+          <button class="category-btn category-btn-save" (click)="updateCategory()">Salvar</button>
+        </div>
+      </li>
+    </ul>
+  </div>
 </div>
