@@ -1,0 +1,37 @@
+<app-sidebar></app-sidebar>
+
+<div class="container">
+  <h1>Gerenciamento de Avisos</h1>
+
+  <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+
+  <!-- Seleção de Categoria -->
+  <div class="form-group">
+    <label for="categoria">Selecione a Categoria:</label>
+    <select id="categoria" [(ngModel)]="idCategoriaSelecionada" (change)="carregarAvisos()" class="form-control">
+      <option *ngFor="let cat of categorias" [value]="cat.id">{{ cat.nome }}</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <input *ngIf="admin" type="text" [(ngModel)]="novoAvisoDescricao" placeholder="Descrição do aviso" class="form-control" />
+    <button *ngIf="admin" (click)="adicionarAviso()" class="btn btn-primary btn-lg">Adicionar Aviso</button>
+  </div>
+
+  <ul class="aviso-list list-group">
+    <li *ngFor="let aviso of avisos" class="list-group-item d-flex justify-content-between align-items-center">
+      <div *ngIf="avisoEditando?.id !== aviso.id">
+        <span>{{ aviso.descricao }}</span>
+        <div *ngIf="admin" class="btn-group">
+          <button class="btn btn-warning btn-sm" (click)="editarAviso(aviso)">Editar</button>
+          <button class="btn btn-danger btn-sm" (click)="excluirAviso(aviso.id)">Excluir</button>
+        </div>
+      </div>
+
+      <div *ngIf="avisoEditando && avisoEditando.id === aviso.id" class="edit-form">
+        <input type="text" [(ngModel)]="avisoEditando!.descricao" class="form-control" />
+        <button class="btn btn-success btn-sm" (click)="salvarEdicao()">Salvar</button>
+      </div>
+    </li>
+  </ul>
+</div>
