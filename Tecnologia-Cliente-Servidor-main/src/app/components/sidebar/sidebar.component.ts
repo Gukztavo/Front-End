@@ -55,6 +55,9 @@ export class SidebarComponent implements OnInit {
   navigateToCategories() {
     this.router.navigate(['/categorias']);
   }
+  navigateToAvisos() {
+    this.router.navigate(['/avisos']);
+  }
   navigateToProfile() {
     this.router.navigate(['/profile']);
   }
